@@ -1,0 +1,59 @@
+<header class="header">
+  <div id="app-header-stack-1" class="row justify-content-center">
+    The Open University of Sri Lanka
+  </div>
+  <div id="app-header-stack-2" class="row justify-content-center pt-2 pb-2">
+
+    <div class="col-sm-5 justify-content-start align-content-start text-start">
+      <img  src="/assets/images/ousl-logo-long-001.png" alt="Logo" height="45px">
+      <img style="margin-left: 30px;" src="/assets/images/menu-001.png" alt="Menu" height="30px">
+    </div>
+
+    <div class="col-sm-5 align-content-center text-end">
+      <img
+        id="app-header-user-img" src="/assets/images/user-011.png" alt="User"
+        (click)="toggleUserMenu($event)"
+      />
+    </div>
+
+    <div
+      *ngIf="showUserMenu" id="app-header-user-drop-down-menu"
+      [ngStyle]="{ top: dropdownPosition.top + 'px', left: dropdownPosition.left + 'px' }"
+    >
+
+      <div id="app-header-close-button-div" (click)="showUserMenu = !showUserMenu" class="text-sm-end">
+        <div id="app-header-close-button-wrapper" class="d-inline-block">
+          <svg width="25" height="25" viewBox="1 1 22 22" focusable="false" class=" NMm5M">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
+            </path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="user-info">
+        <div class="email">{{email}}</div>
+        <img src="/assets/images/user-011.png" alt="User" class="user-photo" />
+        <div class="user-name">Hi, {{name}}</div>
+        <button [routerLink]="['/']" class="manage-btn">Manage your Account</button>
+      </div>
+
+      <div class="dropdown-divider"></div>
+      <div class="user-dropdown-item" [routerLink]="['/']">🏠 Home</div>
+      <div class="user-dropdown-item" >
+        <span *ngIf="!isSignedIn" [routerLink]="['/login']">🔑 Sign In</span>
+        <span *ngIf="isSignedIn" (click)="signOut()">🚪 Sign Out</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+<!--
+
+      <a *ngIf="!isLoggedIn" [routerLink]="['/login']" class="btn btn-link">Login</a>
+      <span *ngIf="isLoggedIn" (click)="logout()" class="btn btn-link text-danger" style="cursor:pointer;">
+        Logout
+      </span>
+
+-->

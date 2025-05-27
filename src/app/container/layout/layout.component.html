@@ -1,0 +1,10 @@
+<div class="layout-container">
+  <app-header *ngIf="showHeader"></app-header>
+  <div class="layout-body">
+    <img (click)="showSidebar = !showSidebar"  *ngIf="showMenuButton" style="margin-left: 30px;margin-top:30px; position: absolute;z-index: 300;background-color: #FFFFFF" src="/assets/images/menu-003.png" alt="Menu" height="30px">
+    <app-sidebar  *ngIf="showSidebar" style="position: absolute;z-index: 290;"></app-sidebar>
+    <main class="layout-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

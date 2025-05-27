@@ -1,0 +1,21 @@
+.sidebar {
+  width: 250px;
+  background-color: #f1f1f1;
+  background: transparent;
+  padding: 1rem;
+  height: 100%;
+  position: absolute;
+}
+
+#inner-sidebar{
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  color: white;
+  /*background-color: #D06718;*/
+  background-color: #D06718;
+  min-height: calc(100vh - 150px);
+  padding-top: 50px;
+}
+
+#inner-sidebar .nav-link {
+  color: white;
+}

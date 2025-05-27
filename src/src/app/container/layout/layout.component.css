@@ -1,0 +1,21 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.layout-body {
+  display: flex;
+  flex: 1;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 150px);
+  margin-top: 90px;
+}
+
+.layout-content {
+  flex: 1;
+  overflow-y: auto;
+}
+

@@ -1,0 +1,57 @@
+<header class="container">
+  <nav class="navbar navbar-expand-lg">
+    <a class="logo" href="https://www.ou.ac.lk">
+      <img src="/assets/images/ousl-logo-001.png" alt="Logo" width="45">
+    </a>
+    <div class="ousl-heading">
+      <h1>The Open University of Sri Lanka</h1>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="login-form">
+      <form #form="ngForm" (ngSubmit)="onFormSubmit(data)">
+        <div class="avatar">
+          <i class="material-icons">&#xE7FF;</i>
+        </div>
+        <h4 class="modal-title">Login to Your Account</h4>
+
+        <div class="form-group">
+          <input type="text"
+                 placeholder="Username"
+                 name="username"
+                 [(ngModel)]="data.username"
+                 class="form-control form-control-sm"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <input type="password"
+                 placeholder="Password"
+                 name="password"
+                 [(ngModel)]="data.password"
+                 class="form-control form-control-sm"
+                 required>
+        </div>
+
+        <div>
+          <input type="submit"
+                 [disabled]="!data.username || !data.password"
+                 class="btn btn-primary btn-block btn-lg w-100 mt-4 mb-3"
+                 value="Login">
+        </div>
+
+        <div class="mb-4">
+          <a style="float:right" routerLink="/admin-forgot-password">Forgot password?</a>
+        </div>
+
+      </form>
+
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+</div>

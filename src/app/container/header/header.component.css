@@ -1,0 +1,141 @@
+.header {
+  /*background-color: #1976d2;*/
+  /*color: white;*/
+  text-align: center;
+  border-bottom: 1px solid #D06718;
+  max-width: 100vw;
+  overflow: hidden;
+}
+.header h1 {
+  margin: 0;
+}
+
+#app-header-stack-1{
+  /*background-color: #D06718;*/
+  background-color: #D06718;
+  color: white;
+  font-family: "Alata", Sans-serif, serif;
+}
+
+#app-header-stack-2{
+  background-color: #ffffff;
+}
+
+#app-header-user-img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  /*border: 1px solid #c1c1c1;*/
+}
+
+
+
+
+
+.user-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+#app-header-user-drop-down-menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 10;
+  width: 260px;
+  padding: 12px;
+  padding-top: 5px;
+  font-family: "Alata", Sans-serif, serif;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.user-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.user-name {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.email {
+  font-size: 15px;
+  color: #333;
+}
+
+.manage-btn {
+  background: #f1f3f4;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.manage-btn:hover {
+  background: #e0e0e0;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
+}
+
+.user-dropdown-item {
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.user-dropdown-item:hover {
+  background: #f7f7f7;
+}
+.navbar-unread-dot {
+  height: 20px;
+  width: 20px;
+  background-color: #25d366;
+  border-radius: 50%;
+  position: absolute;
+  margin-right: 20px;
+}
+
+#app-header-close-button-div{
+}
+
+#app-header-close-button-wrapper{
+  /*width: fit-content;*/
+  width: 40px;
+  height: 40px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+.NMm5M path {
+  fill: #b6b6b6;
+  cursor: pointer;
+}
+
+.NMm5M path:hover {
+  fill: #888888;
+}

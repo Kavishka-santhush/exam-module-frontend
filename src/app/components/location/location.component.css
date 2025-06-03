@@ -1,0 +1,105 @@
+.location-wrapper {
+  background: #fff;
+  margin: 30px auto;
+  padding: 30px 40px;
+  width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #eee;
+}
+
+.location-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location-header h2 {
+  margin: 0;
+}
+
+.location-icons i {
+  font-size: 22px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.location-subheading {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.location-form-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.location-label {
+  width: 120px;
+  font-weight: 500;
+}
+
+.location-input {
+  width: 220px;
+  height: 28px;
+  border-radius: 10px;
+  background: #eee;
+  border: none;
+  padding-left: 10px;
+}
+
+.location-add-btn {
+  background: orangered;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 32px;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.location-add-btn:disabled {
+  background: #eee;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.location-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.location-table th,
+.location-table td {
+  border: 1px solid #aaa;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.location-table th {
+  background: orangered;
+  color: #ffffff;
+}
+
+.location-edit-btn,
+.location-delete-btn {
+  padding: 4px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.location-edit-btn {
+  background: #eee;
+  color: #222;
+}
+
+.location-delete-btn {
+  background: #eee;
+  color: #d00;
+}

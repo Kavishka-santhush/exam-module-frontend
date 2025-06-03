@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { AuthGuard } from './security/auth.guard';
+// import * as path from 'node:path';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,10 @@ export const routes: Routes = [
     path: 'hello',
     loadComponent: () => import('./components/hello/hello.component')
       .then((m) => m.HelloComponent)
+  },
+  {
+    path: 'location',
+    loadComponent: () => import('./components/location/location.component').then(m => m.LocationComponent)
   }
+
 ];

@@ -1,0 +1,69 @@
+<div class="location-wrapper">
+  <div class="location-header">
+    <h2>Exam portal</h2>
+    <div class="location-icons">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-user"></i>
+    </div>
+  </div>
+
+  <h4 class="location-subheading">Edit Location</h4>
+
+  <form
+    #locationForm="ngForm"
+    (ngSubmit)="isEditMode ? updateLocation() : addLocation(locationForm)"
+    class="location-form-row"
+    autocomplete="off"
+  >
+    <label for="name" class="location-label">Exam Location</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      class="location-input"
+      required
+      [(ngModel)]="location.name"
+      #name="ngModel"
+      placeholder=""
+    />
+    <button
+      type="submit"
+      class="location-add-btn"
+      [disabled]="locationForm.invalid"
+    >
+      {{ isEditMode ? 'Update' : 'Add' }}
+    </button>
+    <button
+      *ngIf="isEditMode"
+      type="button"
+      class="btn btn-secondary ml-2"
+      (click)="cancelEdit()"
+    >
+      Cancel
+    </button>
+  </form>
+
+  <table class="location-table">
+    <thead>
+    <tr>
+      <th>Location</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of subjects">
+      <td>{{ item.name }}</td>
+      <td>
+        <button class="location-edit-btn" (click)="editLocation(Number(item.id), item)">Edit</button>
+      </td>
+      <td>
+        <button class="location-delete-btn" (click)="deleteLocation(item.id)">Delete</button>
+      </td>
+    </tr>
+    <tr *ngIf="subjects.length === 0">
+      <td colspan="3" class="text-center">No locations found.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

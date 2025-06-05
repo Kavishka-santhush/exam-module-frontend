@@ -1,0 +1,80 @@
+<div class="container" style="width: 830px;">
+  <br />
+  <h3 style="color:#D06718;">
+    <strong>{{ isEditMode ? 'Edit Subject' : 'Add Subject' }}</strong>
+  </h3>
+  <br />
+
+  <div class="container m-3 mt-4 pt-4 bg-light" style="width: 830px; border: 1px solid; padding: 20px">
+    <form #subjectForm="ngForm">
+      <div class="form-group">
+        <label for="program"><h5>Program</h5></label>
+        <select
+          name="program"
+          class="form-control"
+          id="program"
+          required
+          [(ngModel)]="subject.program.id"
+        >
+          <option selected>Select Program</option>
+          <option [ngValue]="1">Networking</option>
+          <option [ngValue]="2">Language</option>
+          <option [ngValue]="3">Graphic Design</option>
+          <option [ngValue]="4">Information Technology</option>
+        </select>
+      </div>
+
+      <br />
+
+      <div class="form-group">
+        <label for="type"><h5>Subject Name</h5></label>
+        <input
+          type="text"
+          name="type"
+          class="form-control"
+          id="type"
+          required
+          [(ngModel)]="subject.name"
+          placeholder="Enter subject name"
+        />
+      </div>
+
+      <br />
+      <button *ngIf="!isEditMode" (click)="addSubject()" class="btn btn-info">Add Subject</button>
+      <button *ngIf="isEditMode" (click)="updateSubject()" class="btn btn-info">Update Subject</button>
+      <button *ngIf="isEditMode" type="button" class="btn btn-secondary ml-2" (click)="cancelEdit()">
+        Cancel
+      </button>
+
+
+    <hr />
+
+    <h4>All Subjects</h4>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Program</th>
+        <th>Subject</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of subjects">
+          <td>{{ item.program.name || '' }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+          <button class="btn btn-primary" [routerLink]="['/editSubject']" [queryParams]="{ id: item.id }">Edit</button>
+        </td>
+        <td>
+
+          <button class="btn btn-danger" type="button" (click)="deleteSubject(item.id)">Delete</button>
+
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </form>
+  </div>
+</div>

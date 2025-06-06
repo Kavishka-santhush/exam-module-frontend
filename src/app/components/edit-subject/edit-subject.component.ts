@@ -137,11 +137,9 @@ export class EditSubjectComponent {
   // }
 
   deleteSubject(id: number): void {
-    const isConfirm=window.alert("are You sure delete this subject?");
+    window.location.reload();
     this.http.delete(`http://localhost:2000/api/v1/subject/deleteSubject/${id}`).subscribe({
       next: () => {
-        alert('Subject deleted successfully!');
-        // Refresh the list without full page reload
         this.getAllSubjects();
       },
       error: (err) => console.error('Error deleting subject:', err)

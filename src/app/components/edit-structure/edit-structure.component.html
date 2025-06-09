@@ -1,0 +1,76 @@
+<div class="container-fluid py-4">
+  <h2 class="mb-4">Edit Structure</h2>
+
+
+  <div class="row mb-5">
+    <div class="col-md-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Exam Type</h5>
+          <div class="form-group mb-3">
+            <label for="examTypeName">Exam Type Name</label>
+            <input type="text" class="form-control" id="examTypeName" [(ngModel)]="examTypeName" placeholder="Enter exam type name">
+          </div>
+          <div class="form-group mb-3">
+            <label for="programId">Program</label>
+            <select class="form-control" id="programId" [(ngModel)]="selectedProgramId">
+              <option [ngValue]="null">Select Program</option>
+              <option *ngFor="let program of programs" [ngValue]="program.id">{{ program.programName }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="text-center mt-3">
+        <button *ngIf="!editingExamType" (click)="addExamType()" class="btn btn-warning">Add Exam Type</button>
+        <button *ngIf="editingExamType" (click)="updateExamType()" class="btn btn-success me-2">Update Exam Type</button>
+        <button *ngIf="editingExamType" (click)="resetExamTypeForm()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Program & Exam Type List</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>Program</th>
+                  <th>Exam type</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let examType of examTypes">
+                  <tr>
+                    <td>{{ getProgramName(examType.programId) }}</td>
+                    <td>{{ examType.examTypeName }}</td>
+                    <td>
+                      <button class="btn btn-sm btn-primary" (click)="editExamType(examType)">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </td>
+                    <td>
+                      <button class="btn btn-sm btn-danger" (click)="deleteExamType(examType.id)">
+                        <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+                <tr *ngIf="examTypes.length === 0">
+                  <td colspan="4" class="text-center">No exam types found</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

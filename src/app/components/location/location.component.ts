@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 interface Location {
   id?: number;
@@ -16,7 +16,10 @@ interface Location {
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-  location: Location = { name: '' };
+  location: Location = new class implements Location {
+    id: number = 0;
+    name: string = '';
+  }
   subjects: Location[] = [];
   isEditMode = false;
   editingId?: number;
@@ -57,19 +60,11 @@ export class LocationComponent implements OnInit {
     });
   }
 
-  editLocation(id?: number): void {
+  editLocation(id: number, location_: Location): void {
     if (!id) return;
-    this.http.get<Location>(`${this.apiUrl}/${id}`).subscribe({
-      next: (data) => {
-        this.location = { ...data };
-        this.isEditMode = true;
-        this.editingId = id;
-      },
-      error: (err) => {
-        console.error('Failed to fetch location', err);
-        alert('Failed to fetch location data.');
-      }
-    });
+    this.location = location_;
+    this.isEditMode = true;
+    this.editingId = id;
   }
 
   updateLocation(): void {
@@ -117,4 +112,6 @@ export class LocationComponent implements OnInit {
     this.isEditMode = false;
     this.editingId = undefined;
   }
+
+  protected readonly Number = Number;
 }

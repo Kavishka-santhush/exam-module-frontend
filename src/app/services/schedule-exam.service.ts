@@ -14,7 +14,7 @@ export class ScheduleExamService {
   private programUrl = `${this.baseURL}/api/programs`;
   private subjectUrl = `${this.baseURL}/api/subject`;
   private examTypeUrl = `${this.baseURL}/api/examtypes`;
-  private locationUrl = `${this.baseURL}/api/locations`;
+  private locationUrl = `${this.baseURL}/api/v1/location`;
 
   constructor(private http: HttpClient) {}
 

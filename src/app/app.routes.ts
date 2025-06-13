@@ -26,25 +26,14 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'edit-structure',
+    loadComponent: () => import('./components/edit-structure/edit-structure.component')
+      .then((m) => m.EditStructureComponent),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'hello',
     loadComponent: () => import('./components/hello/hello.component')
       .then((m) => m.HelloComponent)
-  },
-  {
-  path: 'editSubject',
-  loadComponent: async () => {
-    const m = await import('./components/edit-subject/edit-subject.component');
-    return m.EditSubjectComponent;
-  },
-  canActivate: [AuthGuard], // Protect route with AuthGuard
-}
-
-  // {
-  //   path: 'deleteSubject',
-  //   loadComponent: async () => {
-  //     const m = await import('./components/edit-subject/edit-subject.component);
-  //     return m.deleteSubjectComponent;
-  //   },
-
-
+  }
 ];

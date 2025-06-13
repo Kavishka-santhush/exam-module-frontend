@@ -51,7 +51,7 @@
 }
 
 .location-add-btn {
-  background: orangered;
+  background: yellow;
   border: none;
   border-radius: 8px;
   padding: 6px 32px;
@@ -81,8 +81,7 @@
 }
 
 .location-table th {
-  background: orangered;
-  color: #ffffff;
+  background: #ddd;
 }
 
 .location-edit-btn,

@@ -21,7 +21,7 @@ export class LocationComponent implements OnInit {
   isEditMode = false;
   editingId?: number;
 
-  private apiUrl = 'http://localhost:2000/api/v1/locations';
+  private apiUrl = 'http://localhost:2000/api/v1/location';
 
   constructor(private http: HttpClient) {}
 
@@ -57,9 +57,9 @@ export class LocationComponent implements OnInit {
     });
   }
 
-  editLocation(id: number, body:Location): void {
+  editLocation(id?: number): void {
     if (!id) return;
-    this.http.put<Location>(`${this.apiUrl}/${id}`, body).subscribe({
+    this.http.get<Location>(`${this.apiUrl}/${id}`).subscribe({
       next: (data) => {
         this.location = { ...data };
         this.isEditMode = true;
@@ -117,6 +117,4 @@ export class LocationComponent implements OnInit {
     this.isEditMode = false;
     this.editingId = undefined;
   }
-
-  protected readonly Number = Number;
 }

@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { AuthGuard } from './security/auth.guard';
-// import * as path from 'node:path';
 
 export const routes: Routes = [
   {
@@ -40,6 +39,17 @@ export const routes: Routes = [
   {
     path: 'location',
     loadComponent: () => import('./components/location/location.component').then(m => m.LocationComponent)
-  }
+  },
+  {
+    path: 'schedule-exam',
+    loadComponent: () => import('./components/schedule-exam/schedule-exam.component')
+      .then((m) => m.ScheduleExamComponent),
 
+  },
+  {
+    path: 'admin-dashboard',
+    loadComponent: () => import('./components/admin-dashboard/admin-dashboard.component')
+      .then((m) => m.AdminDashboardComponent),
+
+  },
 ];

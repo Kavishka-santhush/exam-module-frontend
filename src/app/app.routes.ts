@@ -27,6 +27,12 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'edit-structure',
+    loadComponent: () => import('./components/edit-structure/edit-structure.component')
+      .then((m) => m.EditStructureComponent),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'hello',
     loadComponent: () => import('./components/hello/hello.component')
       .then((m) => m.HelloComponent)

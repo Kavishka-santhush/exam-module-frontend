@@ -3,13 +3,15 @@ import { ScheduleExamService } from '../../services/schedule-exam.service';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-schedule-exam',
   imports: [
     FormsModule,
     NgFor,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './schedule-exam.component.html',
   styleUrl: './schedule-exam.component.css'

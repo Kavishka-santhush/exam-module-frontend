@@ -52,4 +52,10 @@ export const routes: Routes = [
       .then((m) => m.AdminDashboardComponent),
 
   },
+  {
+    path: 'editSubject',
+    loadComponent: () => import('./components/edit-subject/edit-subject.component')
+      .then((m) => m.EditSubjectComponent),
+
+  }
 ];

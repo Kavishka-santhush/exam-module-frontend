@@ -55,7 +55,7 @@
     <tr *ngFor="let item of subjects">
       <td>{{ item.name }}</td>
       <td>
-        <button class="location-edit-btn" (click)="editLocation(item.id)">Edit</button>
+        <button class="location-edit-btn" (click)="editLocation(Number(item.id), item)">Edit</button>
       </td>
       <td>
         <button class="location-delete-btn" (click)="deleteLocation(item.id)">Delete</button>

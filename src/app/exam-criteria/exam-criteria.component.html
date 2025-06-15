@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Manage Exam Criteria Bindings</h2>
+
+  <div class="form-group">
+    <label for="program">Select Program:</label>
+    <select id="program" [(ngModel)]="selectedProgramId" (change)="onProgramChange()" class="form-control">
+      <option [ngValue]="null" disabled>Choose a program</option>
+      <option *ngFor="let program of programs" [value]="program.id">{{ program.programName }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="selectedProgramId">
+    <h3>Grades and Criteria</h3>
+    <div *ngFor="let gradeGroup of gradesAndCriteria" class="grade-group">
+      <h4>{{ gradeGroup.grade }}</h4>
+      <div *ngFor="let criteria of gradeGroup.criteriaList" class="radio-group">
+        <label>
+          <input type="radio" [name]="gradeGroup.grade" [value]="criteria.id" [(ngModel)]="selectedBindings[gradeGroup.grade]">
+          {{ criteria.minMarks }} - {{ criteria.maxMark }}
+        </label>
+      </div>
+    </div>
+
+    <button (click)="saveBindings()" class="btn btn-primary">Save</button>
+  </div>
+</div>

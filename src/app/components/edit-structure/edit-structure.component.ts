@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramService } from '../../services/program.service';
-import { NgxSpinnerModule } from 'ngx-spinner';
+// import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-structure',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgxSpinnerModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './edit-structure.component.html',
   styleUrls: ['./edit-structure.component.css']
 })

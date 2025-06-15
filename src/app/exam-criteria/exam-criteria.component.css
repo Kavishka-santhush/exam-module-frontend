@@ -1,0 +1,185 @@
+/* Main container adjustments to avoid sidebar overlap and add padding */
+.container {
+  margin-left: 260px; /* Adjust this value based on the actual sidebar width */
+  padding: 25px;
+  background-color: #f4f7f6; /* Light background for the content area */
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  box-sizing: border-box;
+}
+
+/* Page Title */
+h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 2em;
+  font-weight: 600;
+  border-bottom: 2px solid #007bff; /* Accent color for the title underline */
+  padding-bottom: 10px;
+}
+
+/* Form group styling for program selection */
+.form-group {
+  margin-bottom: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #555;
+  font-size: 1.1em;
+}
+
+/* Select dropdown styling */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+/* Grades and Criteria section title */
+h3 {
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 1.6em;
+  font-weight: 600;
+}
+
+/* Styling for each grade group (card-like) */
+.grade-group {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+}
+
+.grade-group:hover {
+  transform: translateY(-3px);
+}
+
+.grade-group h4 {
+  color: #007bff; /* Accent color for grade titles */
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.3em;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* Radio button group styling */
+.radio-group {
+  margin-bottom: 12px;
+  padding-left: 5px;
+}
+
+.radio-group label {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically align items */
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  font-size: 1em;
+  transition: color 0.2s ease;
+}
+
+.radio-group label:hover {
+  color: #0056b3;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 12px;
+  appearance: none; /* Remove default appearance */
+  width: 18px;
+  height: 18px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative; /* For custom checkmark */
+  top: -1px; /* Fine-tune vertical alignment */
+}
+
+.radio-group input[type="radio"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Custom checkmark for radio button */
+.radio-group input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Save button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
+  display: inline-block; /* Ensure it behaves like a button */
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0052a0;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 .2rem rgba(38,143,255,.5);
+}
+
+/* Add some general responsiveness for smaller screens if needed */
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0; /* Remove margin on smaller screens if sidebar becomes toggleable */
+    padding: 15px;
+  }
+
+  .grade-group {
+    padding: 15px;
+  }
+
+  .form-control {
+    padding: 10px 12px;
+  }
+}
+
+}

@@ -1,6 +1,8 @@
 .container-fluid {
   max-width: 1400px;
-  margin: 0 auto;
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  box-sizing: border-box;
 }
 
 .card {

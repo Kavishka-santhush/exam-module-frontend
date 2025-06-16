@@ -1,0 +1,51 @@
+<div class="container">
+  <h2 class="page-title">Marks Criteria Interface</h2>
+
+  <div class="card form-section">
+    <div class="form-group">
+      <label for="course-select">Course</label>
+      <select id="course-select" class="form-control" [(ngModel)]="selectedProgramId" (change)="onProgramChange()">
+        <option [ngValue]="null" disabled>Select a course</option>
+        <option *ngFor="let program of programs" [value]="program.id">{{ program.programName }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card table-section">
+    <div class="card-header">
+        <h3>Assessment Components</h3>
+        <button class="btn btn-add-component" (click)="addNewComponentRow()">Add New Row</button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Minimum Marks</th>
+          <th>Weight %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let criteria of marksCriteria; let i = index">
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="criteria.componentName" placeholder="Enter component name">
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="criteria.minMark">
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="criteria.percentage">
+          </td>
+        </tr>
+        <tr *ngIf="marksCriteria.length === 0">
+            <td colspan="3" class="text-center">Select a course to see or add criteria.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="action-buttons">
+    <button class="btn btn-download" (click)="downloadFile()">Download File</button>
+    <button class="btn btn-save" (click)="saveCriteria()">Save</button>
+    <button class="btn btn-clear" (click)="clearForm()">Clear</button>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+.container {
+  margin-left: 260px;
+  padding: 20px;
+  width: calc(100% - 260px);
+}

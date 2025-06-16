@@ -33,6 +33,14 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/edit-structure/edit-structure.component').then(m => m.EditStructureComponent)
             },
             {
+                path: 'final-exam-criteria',
+                loadComponent: () => import('./final-exam-criteria/final-exam-criteria.component').then(c => c.FinalExamCriteriaComponent)
+            },
+            {
+                path: 'marks-criteria',
+                loadComponent: () => import('./marks-criteria/marks-criteria.component').then(c => c.MarksCriteriaComponent)
+            },
+            {
                 path: '',
                 redirectTo: 'dashboard',
                 pathMatch: 'full'

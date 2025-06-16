@@ -1,0 +1,124 @@
+/* General Styles */
+.container {
+  margin-left: 260px; /* To accommodate the sidebar */
+  padding: 2rem;
+  width: calc(100% - 260px);
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+
+/* Form Section */
+.form-section .form-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-section label {
+  font-weight: 600;
+  margin-right: 1rem;
+  min-width: 80px;
+}
+
+.form-control {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 0.5rem 1rem;
+}
+
+/* Table Section */
+.table-section .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.table-section h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+  font-weight: 600;
+  background-color: #f2f2f2;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn {
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-save {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #218838;
+}
+
+.btn-clear {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-clear:hover {
+  background-color: #c82333;
+}
+
+.btn-download {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-download:hover {
+  background-color: #0069d9;
+}
+
+.btn-add-component {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-add-component:hover {
+    background-color: #138496;
+}

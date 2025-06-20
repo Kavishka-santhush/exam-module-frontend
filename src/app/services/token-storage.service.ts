@@ -10,57 +10,36 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  constructor() {}
+  constructor() { }
 
   signOut(): void {
-    [localStorage, sessionStorage].forEach(storage => {
-      storage.removeItem(TOKEN_KEY);
-      storage.removeItem(USER_KEY);
-      storage.clear();
-    });
+    window.localStorage.removeItem(TOKEN_KEY);
+    window.localStorage.removeItem(USER_KEY);
   }
 
-  saveToken(token: string): void {
-    console.log("token authenticated");
-    this.setItemInBothStorages(TOKEN_KEY, token);
+  public saveToken(token: string): void {
+    window.localStorage.removeItem(TOKEN_KEY);
+    window.localStorage.setItem(TOKEN_KEY, token);
   }
 
-  getToken(): string | null {
-    return sessionStorage.getItem(TOKEN_KEY) || this.getFromLocalAndUpdateSession(TOKEN_KEY);
+  public getToken(): string | null {
+    return window.localStorage.getItem(TOKEN_KEY);
   }
 
-  saveUser(user: any): void {
-    console.log("user authenticated");
-    const userStr = JSON.stringify(user);
-    this.setItemInBothStorages(USER_KEY, userStr);
+  public saveUser(user: any): void {
+    window.localStorage.removeItem(USER_KEY);
+    window.localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  getUser(): any {
-    const user = sessionStorage.getItem(USER_KEY) || this.getFromLocalAndUpdateSession(USER_KEY);
-    return user ? JSON.parse(user) : null;
+  public getUser(): any {
+    const user = window.localStorage.getItem(USER_KEY);
+    if (user) {
+      return JSON.parse(user);
+    }
+    return {};
   }
 
-  isUserAuthenticated(): boolean {
-    return !!localStorage.getItem(USER_KEY);
-  }
-
-  private updateSessionStorage(): void {
-    [USER_KEY, TOKEN_KEY].forEach(key => {
-      const value = localStorage.getItem(key);
-      if (value) sessionStorage.setItem(key, value);
-    });
-  }
-
-  private setItemInBothStorages(key: string, value: string): void {
-    [localStorage, sessionStorage].forEach(storage => {
-      storage.removeItem(key);
-      storage.setItem(key, value);
-    });
-  }
-
-  private getFromLocalAndUpdateSession(key: string): string | null {
-    const value = localStorage.getItem(key);
-    if (value) sessionStorage.setItem(key, value);
-    return value;
+  public isUserAuthenticated(): boolean {
+    return !!window.localStorage.getItem(USER_KEY);
   }
 }

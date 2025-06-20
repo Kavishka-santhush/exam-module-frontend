@@ -90,7 +90,7 @@ export class MarksCriteriaComponent implements OnInit {
   }
 
   clearForm(): void {
-    this.selectedProgramId = null;
+    // this.selectedProgramId = null;
     this.marksCriteria = [];
   }
 

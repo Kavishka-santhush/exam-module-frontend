@@ -22,6 +22,7 @@
           <th>Component</th>
           <th>Minimum Marks</th>
           <th>Weight %</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -35,9 +36,14 @@
           <td>
             <input type="number" class="form-control" [(ngModel)]="criteria.percentage">
           </td>
+          <td>
+            <button class="btn btn-link text-danger p-0" (click)="removeComponentRow(i)" title="Remove row">
+              &times;
+            </button>
+          </td>
         </tr>
         <tr *ngIf="marksCriteria.length === 0">
-            <td colspan="3" class="text-center">Select a course to see or add criteria.</td>
+            <td colspan="4" class="text-center">Select a course to see or add criteria.</td>
         </tr>
       </tbody>
     </table>

@@ -36,7 +36,8 @@ export class MarksCriteriaComponent implements OnInit {
         if (data && data.length > 0) {
           this.marksCriteria = data;
         } else {
-          this.setDefaultCriteria();
+          // No existing criteria; start with empty list
+          this.marksCriteria = [];
         }
       });
     } else {
@@ -52,13 +53,10 @@ export class MarksCriteriaComponent implements OnInit {
     this.marksCriteria.push({ id: null, programId: this.selectedProgramId, componentName: '', minMark: 0, percentage: 0 });
   }
 
-  setDefaultCriteria() {
-    if (!this.selectedProgramId) return;
-    this.marksCriteria = [
-      { id: null, programId: this.selectedProgramId, componentName: 'Assignment 01', minMark: 0, percentage: 0 },
-      { id: null, programId: this.selectedProgramId, componentName: 'Assignment 02', minMark: 0, percentage: 0 },
-      { id: null, programId: this.selectedProgramId, componentName: 'Mid exam', minMark: 0, percentage: 0 }
-    ];
+
+
+  removeComponentRow(index: number): void {
+    this.marksCriteria.splice(index, 1);
   }
 
   saveCriteria(): void {

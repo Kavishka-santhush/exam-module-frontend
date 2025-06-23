@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FinalExamCriteriaService } from '../final-exam-criteria.service';
@@ -17,7 +18,7 @@ export class FinalExamCriteriaComponent implements OnInit {
   isEditing = false;
   grades: string[] = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'E', 'F'];
 
-  constructor(private finalExamCriteriaService: FinalExamCriteriaService) { }
+  constructor(private finalExamCriteriaService: FinalExamCriteriaService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadCriteria();
@@ -33,12 +34,12 @@ export class FinalExamCriteriaComponent implements OnInit {
     if (this.isEditing) {
       this.finalExamCriteriaService.updateFinalExamCriteria(this.currentCriteria.id, this.currentCriteria).subscribe({
         next: () => {
-          alert('Criteria updated successfully!');
+          this.toastr.success('Criteria updated successfully');
           this.loadCriteria();
           this.resetForm();
         },
         error: (err) => {
-          alert('Error updating criteria: ' + err.message);
+          this.toastr.error('Failed to update criteria');
           console.error(err);
         }
       });
@@ -47,12 +48,12 @@ export class FinalExamCriteriaComponent implements OnInit {
       const { id, ...newCriteria } = this.currentCriteria;
       this.finalExamCriteriaService.createFinalExamCriteria(newCriteria as FinalExamCriteria).subscribe({
         next: () => {
-          alert('Criteria added successfully!');
+          this.toastr.success('Criteria added successfully');
           this.loadCriteria();
           this.resetForm();
         },
         error: (err) => {
-          alert('Error adding criteria: ' + err.message);
+          this.toastr.error('Failed to add criteria');
           console.error(err);
         }
       });
@@ -68,11 +69,11 @@ export class FinalExamCriteriaComponent implements OnInit {
     if (confirm('Are you sure you want to delete this criteria?')) {
       this.finalExamCriteriaService.deleteFinalExamCriteria(id).subscribe({
         next: () => {
-          alert('Criteria deleted successfully!');
+          this.toastr.success('Criteria deleted successfully');
           this.loadCriteria();
         },
         error: (err) => {
-          alert('Error deleting criteria: ' + err.message);
+          this.toastr.error('Failed to delete criteria');
           console.error(err);
         }
       });

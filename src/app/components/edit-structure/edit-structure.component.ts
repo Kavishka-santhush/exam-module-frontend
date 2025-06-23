@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramService } from '../../services/program.service';
@@ -23,7 +24,7 @@ export class EditStructureComponent implements OnInit {
   
   editingExamType: any = null;
 
-  constructor(private programService: ProgramService) {}
+  constructor(private programService: ProgramService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.loadPrograms();
@@ -55,7 +56,7 @@ export class EditStructureComponent implements OnInit {
   
   addExamType(): void {
     if (!this.examTypeName || !this.selectedProgramId) {
-      alert('Please fill in all exam type fields');
+      this.toastr.warning('Please fill in all exam type fields');
       return;
     }
 
@@ -68,11 +69,11 @@ export class EditStructureComponent implements OnInit {
       next: (response) => {
         this.examTypes.push(response);
         this.resetExamTypeForm();
-        alert('Exam Type added successfully');
+        this.toastr.success('Exam Type added successfully');
       },
       error: (err) => {
         console.error('Error adding exam type:', err);
-        alert('Failed to add exam type: ' + (err.error?.message || 'Unknown error'));
+        this.toastr.error('Failed to add exam type');
       }
     });
   }
@@ -98,28 +99,28 @@ export class EditStructureComponent implements OnInit {
           this.examTypes[index] = response;
         }
         this.resetExamTypeForm();
-        alert('Exam Type updated successfully');
+        this.toastr.success('Exam Type updated successfully');
       },
       error: (err) => {
         console.error('Error updating exam type:', err);
-        alert('Failed to update exam type: ' + (err.error?.message || 'Unknown error'));
+        this.toastr.error('Failed to update exam type');
       }
     });
   }
 
   deleteExamType(id: number): void {
-    if (confirm('Are you sure you want to delete this exam type?')) {
+   
       this.programService.deleteExamType(id).subscribe({
         next: () => {
           this.examTypes = this.examTypes.filter(e => e.id !== id);
-          alert('Exam Type deleted successfully');
+          this.toastr.success('Exam Type deleted successfully');
         },
         error: (err) => {
           console.error('Error deleting exam type:', err);
-          alert('Failed to delete exam type: ' + (err.error?.message || 'Unknown error'));
+          this.toastr.error('Failed to delete exam type');
         }
       });
-    }
+    
   }
 
 

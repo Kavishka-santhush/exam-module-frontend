@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MarksCriteriaService } from '../marks-criteria.service';
@@ -18,7 +19,7 @@ export class MarksCriteriaComponent implements OnInit {
   marksCriteria: MarksCriteria[] = [];
   selectedProgramId: number | null = null;
 
-  constructor(private marksCriteriaService: MarksCriteriaService) { }
+  constructor(private marksCriteriaService: MarksCriteriaService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadPrograms();
@@ -47,7 +48,7 @@ export class MarksCriteriaComponent implements OnInit {
 
   addNewComponentRow() {
     if (!this.selectedProgramId) {
-      alert('Please select a course first.');
+      this.toastr.warning('Please select a course first');
       return;
     }
     this.marksCriteria.push({ id: null, programId: this.selectedProgramId, componentName: '', minMark: 0, percentage: 0 });
@@ -61,29 +62,29 @@ export class MarksCriteriaComponent implements OnInit {
 
   saveCriteria(): void {
     if (!this.selectedProgramId) {
-        alert('Please select a program before saving.');
+        this.toastr.warning('Please select a program before saving');
         return;
     }
 
     const totalPercentage = this.marksCriteria.reduce((sum, item) => sum + item.percentage, 0);
     if (totalPercentage !== 100) {
-      alert('The total weight percentage must be exactly 100.');
+      this.toastr.warning('Total weight must be exactly 100%');
       return;
     }
 
     const validCriteria = this.marksCriteria.filter((c: MarksCriteria) => c.componentName && c.componentName.trim() !== '');
 
     if (validCriteria.length === 0) {
-      alert('Please enter at least one component with a name.');
+      this.toastr.warning('Enter at least one component name');
       return;
     }
 
     this.marksCriteriaService.saveMarksCriteria(validCriteria).subscribe(() => {
-      alert('Marks criteria saved successfully!');
+      this.toastr.success('Marks criteria saved successfully');
       this.onProgramChange(); // Refresh the data
     }, error => {
       console.error('Error saving marks criteria', error);
-      alert('Failed to save marks criteria.');
+      this.toastr.error('Failed to save marks criteria');
     });
   }
 
@@ -94,7 +95,7 @@ export class MarksCriteriaComponent implements OnInit {
 
   downloadFile() {
     if (this.marksCriteria.length === 0) {
-      alert('No data to download.');
+      this.toastr.warning('No data to download');
       return;
     }
     const header = ['Component', 'Minimum Marks', 'Weight %'];

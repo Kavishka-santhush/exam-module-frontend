@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ExamCriteriaService } from '../_services/exam-criteria.service';
@@ -19,7 +20,7 @@ export class ExamCriteriaComponent implements OnInit {
   selectedProgramId: number | null = null;
   selectedBindings: { [key: string]: number } = {};
 
-  constructor(private examCriteriaService: ExamCriteriaService) { }
+  constructor(private examCriteriaService: ExamCriteriaService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadPrograms();
@@ -58,7 +59,7 @@ export class ExamCriteriaComponent implements OnInit {
         bindings: this.selectedBindings
       };
       this.examCriteriaService.saveCriteriaBindings(data).subscribe(() => {
-        alert('Bindings saved successfully!');
+        this.toastr.success('Bindings saved successfully');
       });
     }
   }

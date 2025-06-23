@@ -15,7 +15,11 @@
       <h4>{{ gradeGroup.grade }}</h4>
       <div *ngFor="let criteria of gradeGroup.criteriaList" class="radio-group">
         <label>
-          <input type="radio" [name]="gradeGroup.grade" [value]="criteria.id" [(ngModel)]="selectedBindings[gradeGroup.grade]">
+          <input type="radio"
+                 [name]="gradeGroup.grade"
+                 [value]="criteria.id"
+                 [checked]="selectedBindings[gradeGroup.grade] === criteria.id"
+                 (click)="onCriteriaClick(gradeGroup.grade, criteria.id)">
           {{ criteria.minMarks }} - {{ criteria.maxMark }}
         </label>
       </div>

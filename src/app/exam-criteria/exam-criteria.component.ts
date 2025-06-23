@@ -52,6 +52,15 @@ export class ExamCriteriaComponent implements OnInit {
     }
   }
 
+  onCriteriaClick(grade: string, criteriaId: number): void {
+    // If the same criteria is clicked again, unset it; otherwise set the new id
+    if (this.selectedBindings[grade] === criteriaId) {
+      delete this.selectedBindings[grade];
+    } else {
+      this.selectedBindings[grade] = criteriaId;
+    }
+  }
+
   saveBindings(): void {
     if (this.selectedProgramId) {
       const data = {
